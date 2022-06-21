@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const cors = require('cors');
-const mssql = require('mssql/msnodesqlv8');
+const mssql = require('mssql');
 const md5 = require('crypto-js/md5');
 //Un token de sesiune expira dupa 1 ora
 var sessionTokens = new Map();

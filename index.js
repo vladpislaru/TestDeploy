@@ -8,7 +8,7 @@ var sessionTokens = new Map();
 var productsRoute = require('./Routes/products')
 var usersRoute = require('./Routes/users')
 var mssqlConfig = require('./Configuration/mssql_config');
-
+var clientURL = process.env.AppUrl || "Some url"
 const { response } = require("express");
 
 //Cross Origin Resources Sharing
@@ -93,6 +93,9 @@ server.post('/register' , async (req, res) => {
 })
 
 
+server.get('/', (req, res)=> {
+    res.render("Url is" + clientURL);
+})
 server.post('/login', async (req, res)=>{
     var found = false;
     const {email, password} = req.body;
@@ -126,8 +129,8 @@ server.post('/login', async (req, res)=>{
     
 
 });
-
-var listener = server.listen(1337, ()=> {
+const port = process.env.PORT || 1337;
+var listener = server.listen(port, ()=> {
     console.log("Server started on port " + listener.address().port  )
     console.log("TMP env var is : " + process.env.TMP)
 })

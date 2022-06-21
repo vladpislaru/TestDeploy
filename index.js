@@ -132,5 +132,5 @@ server.post('/login', async (req, res)=>{
 const port = process.env.PORT || 1337;
 var listener = server.listen(port, ()=> {
     console.log("Server started on port " + listener.address().port  )
-    console.log("TMP env var is : " + process.env.TMP)
+    console.log("TMP env var is : " )
 })

@@ -94,7 +94,7 @@ server.post('/register' , async (req, res) => {
 
 
 server.get('/', (req, res)=> {
-    res.render("Url is" + clientURL);
+    res.send("Url is" + clientURL);
 })
 server.post('/login', async (req, res)=>{
     var found = false;

@@ -28,7 +28,7 @@ const corsOptions ={
     credentials: true,
     optionsSuccessStatus: 200
 } 
-server.use(cors(corsOptions))
+server.use(cors())
 server.use('/products', productsRoute);
 server.use('/users', usersRoute)
 

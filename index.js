@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const cors = require('cors');
-const mssql = require('mssql');
+const mssql = require('mssql/msnodesqlv8');
 const md5 = require('crypto-js/md5');
 //Un token de sesiune expira dupa 1 ora
 var sessionTokens = new Map();
@@ -9,7 +9,7 @@ var productsRoute = require('./Routes/products')
 var usersRoute = require('./Routes/users')
 var mssqlConfig = require('./Configuration/mssql_config');
 var clientURL = process.env.AppUrl || "Some url"
-const { response } = require("express");
+
 
 //Cross Origin Resources Sharing
 const whiteList = ['http://localhost:3000'];
@@ -94,7 +94,7 @@ server.post('/register' , async (req, res) => {
 
 
 server.get('/', (req, res)=> {
-    res.send("Url is" + clientURL);
+    res.send("Url is " + clientURL);
 })
 server.post('/login', async (req, res)=>{
     var found = false;

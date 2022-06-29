@@ -46,7 +46,7 @@ router.get('/preview', async  (req, res) => {
     
 
 
-    // var response = await childProccess.exec("cd WORKSPACE\\user1021 && git clone https://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@github.com/vladpislaru/gitTest2.git", async (err, stdout, stderr) =>{
+    // var response = await childProccess.exec("cd WORKSPACE\\user1021 && git clone https://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@github.com/vladpislaru/gitTest2.git", async (err, stdout, stderr) =>{
     //     console.log(stdout);
     //     console.log(err);
     //     response = stdout;

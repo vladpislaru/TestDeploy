@@ -4,14 +4,28 @@ const router = express.Router();
 const childProccess = require("child_process")
 const { DefaultAzureCredential } = require("@azure/identity");
 const azure = require("@azure/arm-appservice")
-router.route('/')
-.get()
-.put()
-.post()
-.delete()
+const mssql = require('mssql/msnodesqlv8');
+var mssqlConfig = require('../Configuration/mssql_config');
 
+router.get('/getAll',  async(req, res) => {
+    // console.log("In /products/getAll");
+    // console.log(req.body);
 
-router.route('/getAll').get();
+        let conn = await mssql.connect(mssqlConfig);
+        console.log(conn)
+        await conn.request().query("SELECT Products.Id, OwnerID, Products.Name as Name,Users.Name as Publisher ,Price, Description, Category  FROM Products INNER JOIN Users ON Products.OwnerID = Users.Id",
+            function(err, rows){
+                if(err){
+                    res.json({status:400});
+                    res.send();
+                }
+                console.log(rows)
+                res.json({products:[]}).send();
+            })
+
+    
+
+});
 router.get('/preview', async  (req, res) => {
     //===========Verificarea stadard a informatiilor necesare===========
     if( !req.body.userid  || !req.body.productid || !req.body.optionid || !req.body.username){
@@ -46,7 +60,7 @@ router.get('/preview', async  (req, res) => {
     
 
 
-    // var response = await childProccess.exec("cd WORKSPACE\\user1021 && git clone https://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@github.com/vladpislaru/gitTest2.git", async (err, stdout, stderr) =>{
+    // var response = await childProccess.exec("cd WORKSPACE\\user1021 && git clone https://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@github.com/vladpislaru/gitTest2.git", async (err, stdout, stderr) =>{
     //     console.log(stdout);
     //     console.log(err);
     //     response = stdout;

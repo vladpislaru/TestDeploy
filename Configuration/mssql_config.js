@@ -1,6 +1,6 @@
 const config={
-    database: "AppsStock",
-    server: "DESKTOP-GODKMT5",
+    database: "AppStore",
+    server: "DESKTOP-EDHLCDI",
     driver: "msnodesqlv8",
     options: {
         trustedConnection: true,

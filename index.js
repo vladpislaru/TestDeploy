@@ -11,12 +11,12 @@ var usersRoute = require('./Routes/users')
 var mssqlConfig = {
     database: process.env.SQL_DATABASE,
     server: process.env.SQL_SERVER,
-    // user: process.env.SQL_USER,
-    // password: process.env.SQLPASSWORD,
+    user: process.env.SQL_USER,
+    password: process.env.SQLPASSWORD,
     //driver: "msnodesqlv8",
     options: {
         trustedConnection: true,
-        encrypt: false,
+        encrypt: true,
         trusServerCertificates: true   
     }
 }
